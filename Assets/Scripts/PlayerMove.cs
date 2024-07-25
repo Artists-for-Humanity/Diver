@@ -96,18 +96,6 @@ public class PlayerMove : MonoBehaviour
             rb.velocity -= grav * fastFall * Time.deltaTime;
         }
     } 
-    // IEnumerator Dash(float moveInput){
-    //     ableToDash = false;
-    //     dashing = true;
-    //     float charGravity = rb.gravityScale;
-    //     rb.gravityScale = 0;
-    //     rb.velocity = new Vector2(moveInput*dashStrength, 0);
-    //     yield return new WaitForSeconds(dashLength);
-    //     rb.gravityScale = charGravity;
-    //     dashing = false;
-    //     yield return new WaitForSeconds(dashCooldown);
-    //     ableToDash = true;
-    // }
     IEnumerator Dash(float moveInput){
     ableToDash = false;
     dashing = true;
