@@ -32,8 +32,8 @@ public class PlayerMove : MonoBehaviour
 
     private bool ableToDash = true;
     private bool dashing;
-    public float dashStrength = 300.0f;
-    public float dashLength = 0.3f;
+    private float dashStrength = 3f;
+    private float dashLength = 0.2f;
     private float dashCooldown = 1f;
 
     //checks if player is on ground
@@ -96,19 +96,32 @@ public class PlayerMove : MonoBehaviour
             rb.velocity -= grav * fastFall * Time.deltaTime;
         }
     } 
+    // IEnumerator Dash(float moveInput){
+    //     ableToDash = false;
+    //     dashing = true;
+    //     float charGravity = rb.gravityScale;
+    //     rb.gravityScale = 0;
+    //     rb.velocity = new Vector2(moveInput*dashStrength, 0);
+    //     yield return new WaitForSeconds(dashLength);
+    //     rb.gravityScale = charGravity;
+    //     dashing = false;
+    //     yield return new WaitForSeconds(dashCooldown);
+    //     ableToDash = true;
+    // }
     IEnumerator Dash(float moveInput){
-        ableToDash = false;
-        dashing = true;
-        float charGravity = rb.gravityScale;
-        rb.gravityScale = 0;
-        rb.velocity = new Vector2(moveInput*3f, rb.gravityScale);
-        
-        yield return new WaitForSeconds(dashLength);
-        rb.gravityScale = charGravity;
-        dashing = false;
-        yield return new WaitForSeconds(dashCooldown);
-        ableToDash = true;
-    }
+    ableToDash = false;
+    dashing = true;
+    float charGravity = rb.gravityScale;
+    rb.gravityScale = 0;
+    rb.velocity = new Vector2(moveInput * dashStrength, 0);
+    yield return new WaitForSeconds(dashLength);
+    rb.velocity = new Vector2(0,charGravity);
+    rb.gravityScale = charGravity;
+    dashing = false;
+    yield return new WaitForSeconds(dashCooldown);
+    ableToDash = true;
+    
+}
     
     void Start(){
         up.Enable();
@@ -127,14 +140,14 @@ public class PlayerMove : MonoBehaviour
         jumpCalcs();
         
         float moveInput = movementDirection();
-        if(ableToDash && dashbutton.IsPressed()){
-            StartCoroutine(Dash(moveInput));
-        }
         if(moveInput > 0 && !(nextToRightWall())){
             rb.velocity = new Vector2(moveInput, rb.velocity.y);
         }
         if(moveInput < 0 && !(nextToLeftWall())){
             rb.velocity = new Vector2(moveInput, rb.velocity.y);
+        }
+        if(ableToDash && dashbutton.IsPressed()){
+            StartCoroutine(Dash(moveInput));
         }
         if(moveInput == 0){
             rb.velocity = new Vector2(0, rb.velocity.y);

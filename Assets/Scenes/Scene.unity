@@ -3824,8 +3824,7 @@ MonoBehaviour:
   groundlevel:
     serializedVersion: 2
     m_Bits: 64
-  dashStrength: 30200
-  dashLength: 0.3
+  dashLength: 0.2
 --- !u!1 &1625000847
 GameObject:
   m_ObjectHideFlags: 0
