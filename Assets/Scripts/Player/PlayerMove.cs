@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerMove : MonoBehaviour
 {      
-    Rigidbody2D rb; 
-    
+    //other components
+    private Rigidbody2D rb; 
+    private AreaChecks checks;
+
     //Jump values
     [SerializeField] int jumpStrength;
     [SerializeField] float fastFall;
@@ -24,44 +26,36 @@ public class PlayerMove : MonoBehaviour
     public InputAction right;
     public InputAction dashbutton;
 
-
-    public Transform wallCheckLeft;
-    public Transform groundCheck;
-    public Transform wallCheckRight;
-    public LayerMask groundlevel;
-
+    //dash values
     private bool ableToDash = true;
     private bool dashing;
     private float dashStrength = 3f;
     private float dashLength = 0.2f;
     private float dashCooldown = 1f;
 
-    //checks if player is on ground
-    bool onGround(){
-        return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1.0f, 0.1f), CapsuleDirection2D.Horizontal,0,groundlevel);
-    }
-    bool nextToRightWall(){
-        return Physics2D.OverlapCapsule(wallCheckRight.position, new Vector2(0.01f, 1.0f), CapsuleDirection2D.Vertical,0,groundlevel);
-    }
-    bool nextToLeftWall(){
-        return Physics2D.OverlapCapsule(wallCheckLeft.position, new Vector2(0.05f, 1.0f), CapsuleDirection2D.Vertical,0,groundlevel);
-    }
+
+    
+    public char playerDirection = 'r';
+
+
     float movementDirection(){
         float moveInput = 0;
     if (left.IsPressed()){
         moveInput = -moveSpeed;
+        playerDirection = 'l';
     }
     else if (right.IsPressed()){
         moveInput = moveSpeed;
+        playerDirection = 'r';
     }
     return moveInput;
     }
     void jumpCalcs(){
-        if(onGround()){
+        if(checks.onGround()){
             extraJumps = doubleJump;
         }
 
-        if(up.IsPressed() && onGround()){
+        if(up.IsPressed() && checks.onGround()){
             jumping = true;
             timeJumping = 0;
             rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
@@ -112,6 +106,7 @@ public class PlayerMove : MonoBehaviour
 }
     
     void Start(){
+        checks = GetComponent<AreaChecks>();
         up.Enable();
         left.Enable();
         right.Enable();
@@ -128,10 +123,10 @@ public class PlayerMove : MonoBehaviour
         jumpCalcs();
         
         float moveInput = movementDirection();
-        if(moveInput > 0 && !(nextToRightWall())){
+        if(moveInput > 0 && !(checks.nextToRightWall())){
             rb.velocity = new Vector2(moveInput, rb.velocity.y);
         }
-        if(moveInput < 0 && !(nextToLeftWall())){
+        if(moveInput < 0 && !(checks.nextToLeftWall())){
             rb.velocity = new Vector2(moveInput, rb.velocity.y);
         }
         if(ableToDash && dashbutton.IsPressed()){
