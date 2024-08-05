@@ -12,10 +12,10 @@ public class AreaChecks : MonoBehaviour
         return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1.0f, 0.1f), CapsuleDirection2D.Horizontal,0,groundlevel);
     }
     public bool nextToRightWall(){
-        return Physics2D.OverlapCapsule(wallCheckRight.position, new Vector2(0.01f, 0.9f), CapsuleDirection2D.Vertical,0,groundlevel);
+        return Physics2D.OverlapCapsule(wallCheckRight.position, new Vector2(0.05f, 1f), CapsuleDirection2D.Vertical,0,groundlevel);
     }
     public bool nextToLeftWall(){
-        return Physics2D.OverlapCapsule(wallCheckLeft.position, new Vector2(0.05f, 0.9f), CapsuleDirection2D.Vertical,0,groundlevel);
+        return Physics2D.OverlapCapsule(wallCheckLeft.position, new Vector2(0.05f, 1f), CapsuleDirection2D.Vertical,0,groundlevel);
     }
 
     void Start()
