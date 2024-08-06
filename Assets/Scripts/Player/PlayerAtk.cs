@@ -6,12 +6,13 @@ using UnityEngine.InputSystem;
 public class PlayerAtk : MonoBehaviour{
     private GameObject attackArea = default;
     private GameObject attackAreaLeft = default;
-    private float attackLength = 0.2f;
+    public float attackLength = 0.2f;
     private bool isAttacking = false;
     private bool canAttack = true;
+    private bool startCooldown = false;
+    private float attackCooldown = 0.4f;
     private PlayerMove move;
     public InputAction attackButton;
-
     public Transform wallCheckRight;
     public Transform wallCheckLeft;
     public LayerMask groundlevel;
@@ -30,17 +31,13 @@ public class PlayerAtk : MonoBehaviour{
     }
   
     void FixedUpdate(){
-        if(attackButton.IsPressed() ){
+        AbleToAttack();
+        if(attackButton.IsPressed() && canAttack){
             StartCoroutine(Attack());
+            
         }
-    
     }
     IEnumerator Attack(){
-        if(nextToRightWall() && move.playerDirection=='r'){
-            yield break;
-        } else if (nextToLeftWall() && move.playerDirection=='l'){
-            yield break;
-        }
         canAttack = false;
         isAttacking = true;
         if(move.playerDirection == 'r'){
@@ -52,6 +49,13 @@ public class PlayerAtk : MonoBehaviour{
         isAttacking = false;
         attackArea.SetActive(isAttacking);
         attackAreaLeft.SetActive(isAttacking);
+        yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
+
+    }
+    void AbleToAttack(){
+        if(startCooldown){
+            canAttack = false;
+        }
     }
 }

@@ -278,6 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21036e5dad2544619a90bb8b7921edbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
+  Hp: {fileID: 652308069}
 --- !u!1 &106256874
 GameObject:
   m_ObjectHideFlags: 0
@@ -52642,6 +52644,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21036e5dad2544619a90bb8b7921edbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
+  Hp: {fileID: 652308069}
 --- !u!212 &473127491
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -52984,9 +52988,11 @@ GameObject:
   - component: {fileID: 652308063}
   - component: {fileID: 652308067}
   - component: {fileID: 652308068}
+  - component: {fileID: 652308070}
+  - component: {fileID: 652308069}
   m_Layer: 7
   m_Name: Meanie
-  m_TagString: Untagged
+  m_TagString: Meanie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53163,6 +53169,34 @@ MonoBehaviour:
   groundlevel:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &652308069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652308062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66ff4f65c3eae420099735ddee68c1ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 4
+  hp: 0
+--- !u!114 &652308070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652308062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3793a0e963b70447782a28e786151a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  Hp: {fileID: 1247158694}
 --- !u!1 &1240056653
 GameObject:
   m_ObjectHideFlags: 0
@@ -53209,9 +53243,10 @@ GameObject:
   - component: {fileID: 1247158690}
   - component: {fileID: 1247158691}
   - component: {fileID: 1247158693}
+  - component: {fileID: 1247158694}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53507,6 +53542,20 @@ MonoBehaviour:
   groundlevel:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &1247158694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247158684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0affbb4d8871247bbbc8fc270a11511c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 5
+  hp: 0
 --- !u!1 &1345710234
 GameObject:
   m_ObjectHideFlags: 0

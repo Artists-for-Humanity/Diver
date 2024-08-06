@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class attackArea : MonoBehaviour
 {
-    private int damage = 1;
-    private void onTriggerEnter2D(Collider2D collider){
-        Debug.Log("Hit Something!");
+    public int damage = 1;
+    public MeanieHp Hp;
+    private void OnTriggerEnter2D(Collider2D collision){
+        if(collision.gameObject.tag == "Meanie"){
+            Hp.TakeDamage(damage);
+            Debug.Log("Enemy Hit");
+        }
     }
 }

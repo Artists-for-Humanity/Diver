@@ -9,12 +9,12 @@ public class PlayerMove : MonoBehaviour
     private AreaChecks checks;
 
     //Jump values
-    [SerializeField] int jumpStrength;
-    [SerializeField] float fastFall;
-    [SerializeField] float higherJump;
-    [SerializeField] float jumpLimit;
-    [SerializeField] float doubleJump;
-    [SerializeField]float moveSpeed;
+    public int jumpStrength;
+    public float fastFall;
+    public float higherJump;
+    public float jumpLimit;
+    public float doubleJump;
+    public float moveSpeed;
     Vector2 grav;
     private bool jumping;
     private float timeJumping;
