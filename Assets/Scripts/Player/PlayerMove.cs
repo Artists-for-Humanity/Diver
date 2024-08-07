@@ -36,7 +36,8 @@ public class PlayerMove : MonoBehaviour
     [Header("Camera")]
     [SerializeField] private GameObject _cameraFollowGO;
     private CameraFollowObject _cameraFollowObject;
-    
+    private float _fallSpeedYDampingChangeThreshold;
+
     public char playerDirection = 'r';
 
   void Start(){
@@ -49,6 +50,7 @@ public class PlayerMove : MonoBehaviour
         grav = new Vector2(0, -Physics2D.gravity.y);
         extraJumps = doubleJump;
         _cameraFollowObject = _cameraFollowGO.GetComponent<CameraFollowObject>();
+        _fallSpeedYDampingChangeThreshold = CameraManager.instance._fallSpeedYDampingChangeThreshold;
     }
     // Update is called once per frame
     void FixedUpdate(){
@@ -73,7 +75,13 @@ public class PlayerMove : MonoBehaviour
         if(moveInput == 0){
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
-        
+        if(rb.velocity.y < _fallSpeedYDampingChangeThreshold && !CameraManager.instance.IsLerpingYDamping && !CameraManager.instance.LerpedFromPlayerFalling){
+            CameraManager.instance.LerpYDamping(true);
+        }
+        if(rb.velocity.y >= 0 && !CameraManager.instance.IsLerpingYDamping && CameraManager.instance.LerpedFromPlayerFalling){
+            CameraManager.instance.LerpedFromPlayerFalling = false;
+            CameraManager.instance.LerpYDamping(false);
+        }
         
     }
     float movementDirection(){

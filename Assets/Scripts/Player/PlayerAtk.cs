@@ -43,12 +43,11 @@ public class PlayerAtk : MonoBehaviour{
         if(move.playerDirection == 'r'){
             attackArea.SetActive(isAttacking);
         } else {
-            attackAreaLeft.SetActive(isAttacking);
+            attackArea.SetActive(isAttacking);
         }
         yield return new WaitForSeconds(attackLength);
         isAttacking = false;
         attackArea.SetActive(isAttacking);
-        attackAreaLeft.SetActive(isAttacking);
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
 
