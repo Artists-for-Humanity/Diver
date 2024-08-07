@@ -33,11 +33,49 @@ public class PlayerMove : MonoBehaviour
     private float dashLength = 0.2f;
     private float dashCooldown = 1f;
 
-
+    [Header("Camera")]
+    [SerializeField] private GameObject _cameraFollowGO;
+    private CameraFollowObject _cameraFollowObject;
     
     public char playerDirection = 'r';
 
-
+  void Start(){
+        checks = GetComponent<AreaChecks>();
+        up.Enable();
+        left.Enable();
+        right.Enable();
+        dashbutton.Enable();
+        rb = GetComponent<Rigidbody2D>();
+        grav = new Vector2(0, -Physics2D.gravity.y);
+        extraJumps = doubleJump;
+        _cameraFollowObject = _cameraFollowGO.GetComponent<CameraFollowObject>();
+    }
+    // Update is called once per frame
+    void FixedUpdate(){
+        if(dashing){
+            return;
+        }
+        jumpCalcs();
+        
+        float moveInput = movementDirection();
+        if(moveInput > 0 && !(checks.nextToRightWall())){
+            rb.velocity = new Vector2(moveInput, rb.velocity.y);
+        }
+        if(moveInput < 0 && !(checks.nextToRightWall())){
+            rb.velocity = new Vector2(moveInput, rb.velocity.y);
+        }
+        if(moveInput> 0 || moveInput < 0){
+            Turn(moveInput);
+        }
+        if(ableToDash && dashbutton.IsPressed()){
+            StartCoroutine(Dash(moveInput));
+        }
+        if(moveInput == 0){
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+        
+        
+    }
     float movementDirection(){
         float moveInput = 0;
     if (left.IsPressed()){
@@ -105,37 +143,19 @@ public class PlayerMove : MonoBehaviour
     
 }
     
-    void Start(){
-        checks = GetComponent<AreaChecks>();
-        up.Enable();
-        left.Enable();
-        right.Enable();
-        dashbutton.Enable();
-        rb = GetComponent<Rigidbody2D>();
-        grav = new Vector2(0, -Physics2D.gravity.y);
-        extraJumps = doubleJump;
-    }
-    // Update is called once per frame
-    void FixedUpdate(){
-        if(dashing){
-            return;
+  
+    void Turn(float moveInput){
+        if (moveInput < 0){
+            Vector3 rotator = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
+            transform.rotation = Quaternion.Euler(rotator);
+            playerDirection = 'l';
+            _cameraFollowObject.CallTurn();
+        } else {
+            Vector3 rotator = new Vector3(transform.rotation.x, 0f, transform.rotation.z);
+            transform.rotation = Quaternion.Euler(rotator);
+            playerDirection = 'r';
+            _cameraFollowObject.CallTurn();
         }
-        jumpCalcs();
-        
-        float moveInput = movementDirection();
-        if(moveInput > 0 && !(checks.nextToRightWall())){
-            rb.velocity = new Vector2(moveInput, rb.velocity.y);
-        }
-        if(moveInput < 0 && !(checks.nextToLeftWall())){
-            rb.velocity = new Vector2(moveInput, rb.velocity.y);
-        }
-        if(ableToDash && dashbutton.IsPressed()){
-            StartCoroutine(Dash(moveInput));
-        }
-        if(moveInput == 0){
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        }
-        
     }
 }
     
