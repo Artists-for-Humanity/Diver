@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class CameraFollowObject : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] Transform _playerTransform;
+
+    [Header("Flip Rotation Stats")]
     [SerializeField] float _flipYRotationTime = 0.5f;
     private Coroutine _turnCoroutine;
     private PlayerMove _player;
@@ -27,9 +30,10 @@ public class CameraFollowObject : MonoBehaviour
         _turnCoroutine = StartCoroutine(FlipYLerp());
     }
     private IEnumerator FlipYLerp(){
-        float startRotation = _playerTransform.localEulerAngles.y;
+        float startRotation = transform.localEulerAngles.y;
         float endRotationAmount = DetermineEndRotation();
         float yRotation = 0f;
+
         float elapsedTime = 0f;
         while(elapsedTime < _flipYRotationTime){
             elapsedTime += Time.deltaTime;
