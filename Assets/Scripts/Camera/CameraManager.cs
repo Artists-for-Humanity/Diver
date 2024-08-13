@@ -113,4 +113,30 @@ public class CameraManager : MonoBehaviour{
         }
     }
     #endregion
+
+    #region Swap Camera
+
+    public void SwapCamera(CinemachineVirtualCamera cameraFromLeft, CinemachineVirtualCamera cameraFromRight, Vector2 TriggerExitDirection){
+        if (_currentCamera == cameraFromLeft && TriggerExitDirection.x > 0f){
+            //swap to new cam
+            cameraFromLeft.enabled = true;
+
+            cameraFromRight.enabled = false;
+
+            _currentCamera = cameraFromRight;
+            _framingTransposer = _currentCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+
+        } else if(_currentCamera == cameraFromRight && TriggerExitDirection.x < 0f){
+            //swap to new cam
+            cameraFromRight.enabled = true;
+
+            cameraFromLeft.enabled = false;
+
+            _currentCamera = cameraFromLeft;
+            _framingTransposer = _currentCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+            
+        }
+    }
+
+    #endregion 
 }
