@@ -6,19 +6,72 @@ public class MeanieMovement : MonoBehaviour
 {
     private AreaChecks check;
     private Rigidbody2D rb;
+    public LayerMask playerLevel;
     Vector2 grav;
+    private char meanieDirection = 'r';
+    private bool positiveMovement;
+    public GameObject projectile;
+    public Transform bulletPos;
+    private float timer;
+    private float attentionSpan = 0;
+    public float endAttentionSpan = 3;
+    public bool PlayerCheck(){
+        Vector2 eyesPos = new Vector2(bulletPos.position.x+49.5f,bulletPos.position.y+33.5f);
+        return Physics2D.OverlapBox(eyesPos.position, new Vector2(100f,75f),CapsuleDirection2D.Horizontal,0,playerLevel);
+    }
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
         check = GetComponent<AreaChecks>();
         rb = GetComponent<Rigidbody2D>();
         grav = new Vector2(0, -Physics2D.gravity.y);
         
+        
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void FixedUpdate(){
+        MeanieMove();
+        Turn(positiveMovement);
+        while (PlayerCheck() || attentionSpan < endAttentionSpan){
+            timer += Time.deltaTime;
+            if(timer > 1){
+            timer = 0;
+            Shoot();
+            }
+            if(!(PlayerCheck())){
+                attentionSpan += Time.deltaTime;
+            }
+            if(attentionSpan>endAttentionSpan){
+                break;
+            }
+        }
         
+        
+    }
+    void MeanieMove(){
+        if(rb.velocity.x > 0){
+            meanieDirection = 'r';
+            positiveMovement = true;
+        } else {
+            meanieDirection = 'l';
+            positiveMovement = false;
+        }
+        
+    }
+    void Turn(bool movingRight){
+        if (!movingRight){
+            Vector3 rotator = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
+            transform.rotation = Quaternion.Euler(rotator);
+            meanieDirection = 'l';
+            
+        } else {
+            Vector3 rotator = new Vector3(transform.rotation.x, 0f, transform.rotation.z);
+            transform.rotation = Quaternion.Euler(rotator);
+            meanieDirection = 'r';
+            
+        }
+    }
+    void Shoot(){
+        Instantiate(projectile, bulletPos.position, Quaternion.identity);
     }
 }
