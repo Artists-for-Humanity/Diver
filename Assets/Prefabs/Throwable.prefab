@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -129,9 +129,6 @@ MonoBehaviour:
   player: {fileID: 0}
   force: 10
   Hp: {fileID: 0}
-  groundLvl:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!61 &6574718393812770145
 BoxCollider2D:
   m_ObjectHideFlags: 0

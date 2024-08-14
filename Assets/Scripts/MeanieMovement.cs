@@ -11,13 +11,14 @@ public class MeanieMovement : MonoBehaviour
     private char meanieDirection = 'r';
     private bool positiveMovement;
     public GameObject projectile;
+    public Transform sight;
     public Transform bulletPos;
     private float timer;
     private float attentionSpan = 0;
     public float endAttentionSpan = 3;
     public bool PlayerCheck(){
-        Vector2 eyesPos = new Vector2(bulletPos.position.x+49.5f,bulletPos.position.y+33.5f);
-        return Physics2D.OverlapBox(eyesPos.position, new Vector2(100f,75f),CapsuleDirection2D.Horizontal,0,playerLevel);
+        
+        return Physics2D.OverlapBox(sight.position, new Vector2(12f,7.5f),0,playerLevel);
     }
     // Start is called before the first frame update
     void Start(){
