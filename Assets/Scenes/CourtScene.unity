@@ -148,7 +148,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 479212986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffab27ee0e2274484acf1fd5309363e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 65d0c458955d34aeaaabc99ee5990cf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: KickScene
@@ -450,7 +450,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d18e0ab4f96344693b91270e39100175, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ae371313a0fe244c7aa2bad22468c260, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -148,9 +148,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 479212986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffab27ee0e2274484acf1fd5309363e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 65d0c458955d34aeaaabc99ee5990cf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: SkyScene
 --- !u!4 &479212988
 Transform:
   m_ObjectHideFlags: 0
