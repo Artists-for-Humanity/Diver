@@ -49,11 +49,7 @@ public class Chase : MonoBehaviour
         yield return new WaitForSeconds(moveCooldown);
         lunging = false;
     }
-    // private void OnTriggerEnter2D(Collider2D collider) {
-    //     if(collider.gameObject.tag == "Player"){
-    //         collider.GetComponent<>();
-    //     }
-    // }
+  
     void Awake(){
         Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(),boxCollider, true);
     }

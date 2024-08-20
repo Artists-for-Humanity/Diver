@@ -17,7 +17,6 @@ public class MeanieMovement : MonoBehaviour
     private float attentionSpan = 0;
     public float endAttentionSpan = 3;
     public bool PlayerCheck(){
-        
         return Physics2D.OverlapBox(sight.position, new Vector2(12f,7.5f),0,playerLevel);
     }
     // Start is called before the first frame update
