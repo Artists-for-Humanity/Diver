@@ -9,6 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/SkyScene.unity
+    guid: 5ee02ee8c4d2c478396b7e1af33c5792
+  - enabled: 1
+    path: Assets/Scenes/CourtScene.unity
+    guid: da0765a6ad13146b28714fb81381132e
+  - enabled: 1
+    path: Assets/Scenes/KickScene.unity
+    guid: 8bf579e33d9b742939a29154bded2909
+  - enabled: 1
+    path: Assets/Scenes/FallScene.unity
+    guid: 2dfe1092e18ea44f6b2cd7dc2a0a5419
+  - enabled: 1
+    path: Assets/Scenes/GetUpScene.unity
+    guid: 4a6a17e7b49b64d8c95e33f3dc07611a
+  - enabled: 1
     path: Assets/Scenes/ChaseSequence.unity
     guid: bf625dc21b306402583f327a9a890ff8
   m_configObjects: {}
