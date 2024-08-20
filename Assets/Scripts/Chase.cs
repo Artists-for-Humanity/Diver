@@ -10,7 +10,7 @@ public class Chase : MonoBehaviour
     private bool lunging;
     public float lungeStrength;
     private float lungeLength = 1f;
-    private float moveCooldown = 0.3f;
+    private float moveCooldown = 0.5f;
     public Rigidbody2D rb;
     public BoxCollider2D boxCollider;
 

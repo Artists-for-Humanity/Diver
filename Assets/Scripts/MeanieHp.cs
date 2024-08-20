@@ -11,6 +11,7 @@ public class MeanieHp : MonoBehaviour{
     }
     public void TakeDamage(int damageTaken){
         hp -= damageTaken;
+
         if(hp <= 0){
             Destroy(gameObject);
         }

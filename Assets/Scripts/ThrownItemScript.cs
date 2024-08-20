@@ -7,7 +7,7 @@ public class ThrownItemScript : MonoBehaviour
     public GameObject player;
     private Rigidbody2D rb;
     public float force;
-    private int damage = 1;
+    private int damage = 3;
     public PlayerHp Hp;
     private float timer;    
     private PlayerMove movement;
@@ -44,6 +44,10 @@ public class ThrownItemScript : MonoBehaviour
         if((collision.gameObject.tag == "Stage")){
             Destroy(gameObject);
             Debug.Log("Break");
+        }
+        if(collision.gameObject.tag == "playerAtk"){
+            Debug.Log("Damage Taken");
+            Destroy(gameObject);
         }
     }
 }
