@@ -39,7 +39,9 @@ public class PlayerMove : MonoBehaviour
     private float _fallSpeedYDampingChangeThreshold;
 
     public char playerDirection = 'r';
-
+public bool getDashing(){
+    return dashing;
+}
   void Start(){
         checks = GetComponent<AreaChecks>();
         up.Enable();

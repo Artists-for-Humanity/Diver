@@ -10,7 +10,7 @@ public class ThrownItemScript : MonoBehaviour
     private int damage = 1;
     public PlayerHp Hp;
     private float timer;    
-    
+    private PlayerMove movement;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +33,10 @@ public class ThrownItemScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision){
         
         if(collision.gameObject.tag == "Player"){
+            movement = collision.GetComponent<PlayerMove>();
+            if(movement.getDashing()){
+                return;
+            }
             collision.gameObject.GetComponent<PlayerHp>().hp -= damage;
             Debug.Log("Damage Taken");
             Destroy(gameObject);

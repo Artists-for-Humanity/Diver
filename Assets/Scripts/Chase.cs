@@ -12,11 +12,15 @@ public class Chase : MonoBehaviour
     private float lungeLength = 1f;
     private float moveCooldown = 0.3f;
     public Rigidbody2D rb;
+    public BoxCollider2D boxCollider;
+
 
     // Start is called before the first frame update
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
+
     }
 
     // Update is called once per frame
@@ -45,9 +49,12 @@ public class Chase : MonoBehaviour
         yield return new WaitForSeconds(moveCooldown);
         lunging = false;
     }
-    private void OnTriggerEnter2D(Collider2D collider) {
-        if(collider.gameObject.tag == "Stage") {
-            Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(),collider, true);
-        }
+    // private void OnTriggerEnter2D(Collider2D collider) {
+    //     if(collider.gameObject.tag == "Player"){
+    //         collider.GetComponent<>();
+    //     }
+    // }
+    void Awake(){
+        Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(),boxCollider, true);
     }
 }
