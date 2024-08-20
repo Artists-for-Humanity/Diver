@@ -14,7 +14,6 @@ public class ThrownItemScript : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         Vector3 direction = player.transform.position - transform.position;
@@ -37,7 +36,8 @@ public class ThrownItemScript : MonoBehaviour
             if(movement.getDashing()){
                 return;
             }
-            collision.gameObject.GetComponent<PlayerHp>().hp -= damage;
+            Hp = collision.gameObject.GetComponent<PlayerHp>();
+            Hp.TakeDamage(damage);
             Debug.Log("Damage Taken");
             Destroy(gameObject);
         }

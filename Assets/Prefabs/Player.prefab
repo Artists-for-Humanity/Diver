@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpStrength: 5
-  fastFall: 2
+  fastFall: 3
   higherJump: 1.5
   jumpLimit: 0.5
   doubleJump: 1
@@ -242,7 +242,23 @@ MonoBehaviour:
       m_Flags: 0
     - m_Name: 
       m_Id: 31ec0723-3a58-4ee3-843c-5b67f14ba5ca
-      m_Path: 
+      m_Path: <Joystick>/stick/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Up
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 65a1235f-fc57-4a7f-9317-811b990f5488
+      m_Path: <HID::Google LLC Stadia Controller rev. A>/button5
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Up
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 52321de8-a1df-498b-80ee-8a8a0c347bf7
+      m_Path: <HID::Google LLC Stadia Controller rev. A>/hat/up
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -265,6 +281,22 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Left
       m_Flags: 0
+    - m_Name: 
+      m_Id: 6e947df4-690e-48cc-8050-da2e9b879aa1
+      m_Path: <Joystick>/stick/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 5fac52f6-9db8-4e2e-a8e4-6d874844f98c
+      m_Path: <HID::Google LLC Stadia Controller rev. A>/hat/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left
+      m_Flags: 0
     m_Flags: 0
   right:
     m_Name: Right
@@ -282,6 +314,22 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Right
       m_Flags: 0
+    - m_Name: 
+      m_Id: ca44ec8f-24bd-4f38-8c2e-043947c9fea8
+      m_Path: <HID::Google LLC Stadia Controller rev. A>/hat/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Right
+      m_Flags: 0
+    - m_Name: 
+      m_Id: d9e564d9-4a6e-4f1e-b084-99c617423bac
+      m_Path: <Joystick>/stick/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Right
+      m_Flags: 0
     m_Flags: 0
   dashbutton:
     m_Name: Dashbutton
@@ -294,6 +342,14 @@ MonoBehaviour:
     - m_Name: 
       m_Id: dfec5fb8-6c73-4be2-ba50-7ea2faa9aa9c
       m_Path: <Keyboard>/leftShift
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Dashbutton
+      m_Flags: 0
+    - m_Name: 
+      m_Id: e866c50e-272d-4fba-96a1-6ab6ae43a41e
+      m_Path: <HID::Google LLC Stadia Controller rev. A>/button2
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -326,6 +382,14 @@ MonoBehaviour:
     - m_Name: 
       m_Id: 66bdfaca-80e0-4a77-9b70-028b9a77e563
       m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Attack Button
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 54a7f560-0862-4da7-868b-c93b6121968d
+      m_Path: <HID::Google LLC Stadia Controller rev. A>/trigger
       m_Interactions: 
       m_Processors: 
       m_Groups: 
