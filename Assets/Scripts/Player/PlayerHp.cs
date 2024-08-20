@@ -11,7 +11,7 @@ public class PlayerHp : MonoBehaviour{
     }
     public void TakeDamage(int damageTaken){
         hp -= damageTaken;
-        healthBar.fillAmount = hp / 100f;
+        healthBar.fillAmount = hp / 5f;
         Debug.Log("Damage Taken");
         if(hp <= 0){
             Destroy(gameObject);
