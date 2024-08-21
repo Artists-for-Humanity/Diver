@@ -13,7 +13,13 @@ public class MeanieHp : MonoBehaviour{
         hp -= damageTaken;
 
         if(hp <= 0){
-            Destroy(gameObject);
+            ScoreScript.scoreVal += 10;
+            Debug.Log(ScoreScript.scoreVal);
+            DisableEnemy();
         }
+    }
+    private void DisableEnemy(){
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 }

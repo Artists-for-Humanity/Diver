@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3324413439515596549}
   - component: {fileID: 1336714120059507336}
   - component: {fileID: 5728329808217886665}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ChaseEntity
   m_TagString: Meanie
   m_Icon: {fileID: 0}

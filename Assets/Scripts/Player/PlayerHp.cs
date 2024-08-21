@@ -2,31 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class PlayerHp : MonoBehaviour{
     public Image healthBar;
     public int maxHp;
     public int hp;
-    // public float iFrames = 1f;
-    // public float timer = 0f;
-    // public bool giveIFrames = false;
+    public Transform respawnPoint;
+    [Header("iFrames")]
+    public float iFrames;
+    public int numberOfFlashes;
+    public EnemyRespawn enemyRespawn;
+    private SpriteRenderer spriteRenderer;
+    
     void Start(){
         hp = maxHp;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     public void TakeDamage(int damageTaken){
-        // if (giveIFrames){
-            
-        //     return;
-        // }
         hp -= damageTaken;
-        healthBar.fillAmount = hp / 10f;
-        // giveIFrames = true;
+        if(hp<=0){
+            healthBar.fillAmount = 10f / 10f;
+        } else {
+            healthBar.fillAmount = hp / 10f;
+        }
         Debug.Log("Damage Taken");
         if(hp <= 0){
-            Destroy(gameObject);
+            hp = maxHp;
+            ScoreScript.scoreVal = 0;
+            transform.position = respawnPoint.position;
+            enemyRespawn.EnemyRespawnsOnDeath();
+            
         }
+        StartCoroutine(IFrames());
     }
-    // public void IFrames(){
-    //     timer += Time.deltaTime;
-    //     if (timer <)
-    // }
+    private IEnumerator IFrames(){
+        Physics2D.IgnoreLayerCollision(3,7,true);
+        for(int i = 0; i < numberOfFlashes; i++){
+            spriteRenderer.color = new Color(1,0,0,0.2f);
+            yield return new WaitForSeconds(iFrames / (numberOfFlashes * 2));
+            spriteRenderer.color = new Color(1,0,0,1f);
+            yield return new WaitForSeconds(iFrames / (numberOfFlashes * 2));
+        }
+        Physics2D.IgnoreLayerCollision(3,7,false);
+    }
 }
