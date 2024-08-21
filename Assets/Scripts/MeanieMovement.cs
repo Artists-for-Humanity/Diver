@@ -16,6 +16,8 @@ public class MeanieMovement : MonoBehaviour
     private float timer;
     private float attentionSpan = 0;
     public float endAttentionSpan = 3;
+    public MeanieHp health;
+    
     public bool PlayerCheck(){
         return Physics2D.OverlapBox(sight.position, new Vector2(12f,7.5f),0,playerLevel);
     }
@@ -24,12 +26,16 @@ public class MeanieMovement : MonoBehaviour
         check = GetComponent<AreaChecks>();
         rb = GetComponent<Rigidbody2D>();
         grav = new Vector2(0, -Physics2D.gravity.y);
+        health = GetComponent<MeanieHp>();
         
-        
-    }
+        }
 
     // Update is called once per frame
     void FixedUpdate(){
+        if(health.hp <= 0){
+            rb.velocity = new Vector2(0f,0f);
+            return;
+        }
         MeanieMove();
         Turn(positiveMovement);
         while (PlayerCheck() || attentionSpan < endAttentionSpan){

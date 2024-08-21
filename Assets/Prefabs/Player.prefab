@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 261056761170533825}
   - component: {fileID: 3566714616766975303}
   - component: {fileID: 818665666013154858}
+  - component: {fileID: 1694335599902077421}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -210,9 +211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2e2742c8344460daf322212c3469e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpStrength: 5
+  jumpStrength: 7
   fastFall: 3
-  higherJump: 1.5
+  higherJump: 1.2
   jumpLimit: 0.5
   doubleJump: 1
   moveSpeed: 5
@@ -349,7 +350,15 @@ MonoBehaviour:
       m_Flags: 0
     - m_Name: 
       m_Id: e866c50e-272d-4fba-96a1-6ab6ae43a41e
-      m_Path: <HID::Google LLC Stadia Controller rev. A>/button2
+      m_Path: <HID::Google LLC Stadia Controller rev. A>/trigger
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Dashbutton
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 83f574fc-1758-435a-a90c-acb674bed5f7
+      m_Path: <HID::Google LLC Stadia Controller rev. A>/button20
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -389,7 +398,15 @@ MonoBehaviour:
       m_Flags: 0
     - m_Name: 
       m_Id: 54a7f560-0862-4da7-868b-c93b6121968d
-      m_Path: <HID::Google LLC Stadia Controller rev. A>/trigger
+      m_Path: <HID::Google LLC Stadia Controller rev. A>/button2
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Attack Button
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 704899f2-5b7a-4829-94fe-9e285d19e0f8
+      m_Path: <HID::Google LLC Stadia Controller rev. A>/button19
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -431,8 +448,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0affbb4d8871247bbbc8fc270a11511c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 5
+  healthBar: {fileID: 0}
+  maxHp: 10
   hp: 0
+--- !u!114 &1694335599902077421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135724092982993270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3865a58fa0a5d4e9b894b9b153d92646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2135724092982993270}
+  respawnPoint: {fileID: 0}
 --- !u!1 &4149877313492635117
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +479,7 @@ GameObject:
   - component: {fileID: 9007036540433696152}
   m_Layer: 3
   m_Name: attackArea
-  m_TagString: Untagged
+  m_TagString: playerAtk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -462,7 +494,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.656, y: 0.065, z: 0}
-  m_LocalScale: {x: 4.0625, y: 1.15, z: 1}
+  m_LocalScale: {x: 10.0625, y: 1.15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1776298038593697658}
@@ -650,7 +682,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.656, y: 0.065, z: 0}
-  m_LocalScale: {x: -4.0625, y: 1.475, z: 1}
+  m_LocalScale: {x: -10.0625, y: 1.475, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1776298038593697658}

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Meanie
   - Stage
+  - playerAtk
+  - score
+  - highscore
   layers:
   - Default
   - TransparentFX
