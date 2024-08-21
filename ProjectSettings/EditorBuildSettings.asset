@@ -24,12 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GetUpScene.unity
     guid: 4a6a17e7b49b64d8c95e33f3dc07611a
   - enabled: 1
-    path: Assets/Scenes/DevScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/DeathScene.unity
-    guid: 76b998bfb65de4a6080b77782ed7a3c5
-  - enabled: 1
     path: Assets/Scenes/ControlsScene.unity
     guid: ce60cbb4e6c4a854ebb700b5a38a90e4
+  - enabled: 1
+    path: Assets/Scenes/DevScene.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects: {}
