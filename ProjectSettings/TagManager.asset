@@ -8,6 +8,7 @@ TagManager:
   - Stage
   - playerAtk
   - score
+  - highscore
   layers:
   - Default
   - TransparentFX

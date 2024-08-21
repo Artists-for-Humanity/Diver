@@ -2,20 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // Import the TextMesh Pro namespace
+using TMPro; 
 
 public class ScoreScript : MonoBehaviour
 {
     public static int scoreVal = 0;
-    public TextMeshProUGUI score; // Change the type to TextMeshProUGUI
-
+    public static int highScore;
+    public TextMeshProUGUI score;
+    public TextMeshProUGUI highScoreText;
     void Start(){
-        // Get the TextMeshProUGUI component from the GameObject with the tag "score"
         score = GameObject.FindWithTag("score").GetComponent<TextMeshProUGUI>();
+        highScoreText = GameObject.FindWithTag("highscore").GetComponent<TextMeshProUGUI>();
     }
 
     void Update(){
         score.text = "Score: " + scoreVal;
+        if (scoreVal > highScore){
+            highScore = scoreVal;
+            highScoreText.text = "High Score: " + highScore;
+        }
     }
 
 }
