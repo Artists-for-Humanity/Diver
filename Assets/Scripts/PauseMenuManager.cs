@@ -28,6 +28,7 @@ public class PauseMenuManager : MonoBehaviour
                 PauseGame();
             }
         }
+
     }
 
     public void PauseGame()
@@ -54,5 +55,10 @@ public class PauseMenuManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("ControlsScene");
+    }
+
+    public void ActualQuit()
+    {
+        Application.Quit();
     }
 }

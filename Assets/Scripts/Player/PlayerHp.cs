@@ -14,10 +14,15 @@ public class PlayerHp : MonoBehaviour{
     public int numberOfFlashes;
     public EnemyRespawn enemyRespawn;
     private SpriteRenderer spriteRenderer;
-    
+    private bool immune;
+    public bool getImmunity(){
+        return immune;
+    }
     void Start(){
         hp = maxHp;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        immune = false;
+        Physics2D.IgnoreLayerCollision(3,7,false);
     }
     public void TakeDamage(int damageTaken){
         hp -= damageTaken;
@@ -40,10 +45,13 @@ public class PlayerHp : MonoBehaviour{
         Physics2D.IgnoreLayerCollision(3,7,true);
         for(int i = 0; i < numberOfFlashes; i++){
             spriteRenderer.color = new Color(1,0,0,0.2f);
+            immune = true;
             yield return new WaitForSeconds(iFrames / (numberOfFlashes * 2));
+
             spriteRenderer.color = new Color(1,0,0,1f);
             yield return new WaitForSeconds(iFrames / (numberOfFlashes * 2));
         }
         Physics2D.IgnoreLayerCollision(3,7,false);
+        immune = false;
     }
 }

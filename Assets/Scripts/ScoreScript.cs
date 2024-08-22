@@ -12,6 +12,9 @@ public class ScoreScript : MonoBehaviour
     public TextMeshProUGUI highScoreText;
     void Start(){
         score = GameObject.FindWithTag("score").GetComponent<TextMeshProUGUI>();
+        highScore = scoreVal;
+        highScoreText.text = "High Score: " + highScore;
+        scoreVal = 0;
         highScoreText = GameObject.FindWithTag("highscore").GetComponent<TextMeshProUGUI>();
     }
 
